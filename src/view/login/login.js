@@ -1,7 +1,7 @@
 import { Text, KeyboardAvoidingView, View, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 import { useState } from 'react';
 import stylesLogin from './styles';
-import fox from '../../assets/fox.png';
+import fox from '../../assets/images/fox.png';
 
 const Login = ({ navigation }) => {
   const [userId, setUserId] = useState('');
@@ -9,8 +9,7 @@ const Login = ({ navigation }) => {
   const userExists = (id) => {
     id = userId;
     if (id === 'JuanTR2') {
-      Alert.alert('Bem vindo ' + userId);
-      navigation.navigate('Home');
+      navigation.navigate('Home', {id});
 
     } else {
       Alert.alert('Acesso negado');
@@ -27,6 +26,7 @@ const Login = ({ navigation }) => {
         placeholder='User-ID' 
         style={stylesLogin.input}
         onChangeText={setUserId}
+        value={userId}
       />
       
       <TouchableOpacity 
@@ -39,7 +39,7 @@ const Login = ({ navigation }) => {
       <View style={stylesLogin.separator}/>
       
       <TouchableOpacity style={stylesLogin.linkId} onPress={() => Alert.alert('Work In Progress...')}>
-        <Text style={{color: '#9b59b6', fontWeight: 'bold'}}>CRIAR ID</Text>
+        <Text style={{color: '#9b59b6', fontWeight: 'bold'}}>CREATE ID</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );

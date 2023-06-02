@@ -16,7 +16,14 @@ const Routes = () => {
             <Stack.Screen 
                 name='Home' 
                 component={Home} 
-                options={{headerShown: true}}
+                options={{
+                    headerShown: true, 
+                    headerTintColor: '#FFF', 
+                    headerStyle: {
+                        backgroundColor: '#9b59b6'
+                    },
+                    headerTitle: 'Fox Player'
+                }}
             />
         </Stack.Navigator>
     );
