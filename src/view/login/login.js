@@ -1,18 +1,28 @@
 import { Text, KeyboardAvoidingView, View, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import stylesLogin from './styles';
 import fox from '../../assets/images/fox.png';
+import Api from '../../services/api';
 
 const Login = ({ navigation }) => {
   const [userId, setUserId] = useState('');
 
-  const userExists = (id) => {
-    id = userId;
-    if (id === 'JuanTR2') {
-      navigation.navigate('Home', {id});
+  const signInUser = async () => {
+    const data = {
+      name: userId
+    };
+
+    const response = await Api.post('sessions', data);
+
+    if (userId === response.data[0].name) { 
+        navigation.navigate('Home', {userId});
+
+    } else if (!userId.trim()){
+      Alert.alert('ACCESS DENIED!', 'Insert Your User-ID');
 
     } else {
-      Alert.alert('Acesso negado');
+      Alert.alert('ACCESS DENIED!', 'The User-ID Don´t Exists!');
+
     }
   }
 
@@ -31,14 +41,14 @@ const Login = ({ navigation }) => {
       
       <TouchableOpacity 
         style={stylesLogin.button}
-        onPress={userExists}
+        onPress={signInUser}
       >
         <Text style={{color: '#fff', fontWeight: 'bold'}}>ENTER</Text>
       </TouchableOpacity>
 
       <View style={stylesLogin.separator}/>
       
-      <TouchableOpacity style={stylesLogin.linkId} onPress={() => Alert.alert('Work In Progress...')}>
+      <TouchableOpacity style={stylesLogin.linkId} onPress={() => navigation.navigate('SignUp')}>
         <Text style={{color: '#9b59b6', fontWeight: 'bold'}}>CREATE ID</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>

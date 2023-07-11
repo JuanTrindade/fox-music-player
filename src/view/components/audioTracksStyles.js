@@ -5,6 +5,7 @@ const AudioTrackStyles = StyleSheet.create({
         width: '100%',
         flex: 1,
     },
+
     modalContainer: {
         position: 'absolute',
         bottom: 0,
@@ -19,6 +20,7 @@ const AudioTrackStyles = StyleSheet.create({
         borderTopRightRadius: 20,
         shadowColor: '#ddd',
     },
+
     trackButton: {
         borderWidth: 1,
         borderColor: '#ddd', 
@@ -26,9 +28,11 @@ const AudioTrackStyles = StyleSheet.create({
         height: 70,
         justifyContent: 'center',
     },
+
     text :{
         fontWeight: 'bold',
     },
+
     modalTrackTitle: {
         fontWeight: 'bold',
         fontStyle: 'italic',
@@ -40,11 +44,13 @@ const AudioTrackStyles = StyleSheet.create({
         justifyContent: 'center',
         padding: 2
     },
+    
     playerControllerContainer :{
         display: 'flex', 
         flexDirection: 'row', 
         justifyContent: 'center',
         width: '100%',
+        marginTop: '7%'
     }
 })
 

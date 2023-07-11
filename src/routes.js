@@ -4,6 +4,7 @@ const Stack = createNativeStackNavigator();
 
 import Login from './view/login/login';
 import Home from './view/home/home';
+import SignUp from './view/sign-up/signup';
 
 const Routes = () => {
     return(
@@ -24,6 +25,11 @@ const Routes = () => {
                     },
                     headerTitle: 'Fox Player'
                 }}
+            />
+            <Stack.Screen 
+                name='SignUp'
+                component={SignUp}
+                options={{headerShown: false}}
             />
         </Stack.Navigator>
     );
